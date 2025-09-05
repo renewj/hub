@@ -1,4 +1,4 @@
-export default funtion Home(){
+export default function Home(){
   return(
     <main>
     <h1>HELLO!</h1>
