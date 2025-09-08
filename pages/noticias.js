@@ -15,7 +15,7 @@ export default function Noticias() {
 
   return (
     <div>
-      <h1>Últimas Notícias do Infomoney</h1>
+      <h1>Últimas Notícias...</h1>
       {loading ? (
         <p>Carregando...</p>
       ) : (
