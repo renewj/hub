@@ -1,4 +1,4 @@
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch(
     'https://www.infomoney.com.br/wp-json/wp/v2/posts?per_page=10'
   );
@@ -16,6 +16,8 @@ export async function getServerSideProps() {
     props: {
       noticias,
     },
+    // Revalida a cada 10 minutos (600 segundos)
+    revalidate: 600,
   };
 }
 
