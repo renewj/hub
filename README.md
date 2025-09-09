@@ -1,4 +1,4 @@
-# Next.js + API Example
+# Next.js + API Examples
 
 Este projeto conecta Next.js à API REST do WordPress e entrega:
 
