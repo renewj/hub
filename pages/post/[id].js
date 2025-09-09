@@ -1,28 +1,39 @@
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-export default function PostPage() {
-  const router = useRouter()
-  const { id } = router.query
-  const [post, setPost] = useState(null)
-  const [loading, setLoading] = useState(true)
+export async function getServerSideProps(context) {
+  const { id } = context.params
+  const apiUrl = process.env.WORDPRESS_API_URL || 'https://seu-site-wordpress.com/wp-json/wp/v2'
+  let post = null
 
-  useEffect(() => {
-    if (id) {
-      fetch(`${process.env.WORDPRESS_API_URL}/posts/${id}`)
-        .then(res => res.json())
-        .then(data => {
-          setPost(data)
-          setLoading(false)
-        })
+  const res = await fetch(`${apiUrl}/posts/${id}`)
+  if (res.ok) {
+    post = await res.json()
+  }
+
+  return {
+    props: {
+      post,
+      notFound: !post || post.status === '404',
     }
-  }, [id])
+  }
+}
 
-  if (loading) return <p>Carregando...</p>
-  if (!post || post.status === '404') return <p>Post não encontrado.</p>
+export default function PostPage({ post, notFound }) {
+  if (notFound) {
+    return (
+      <>
+        <Header />
+        <main style={{maxWidth: '800px', margin: '0 auto', padding: '2rem'}}>
+          <Link href="/"><a>← Voltar</a></Link>
+          <h1>Post não encontrado</h1>
+          <p>O conteúdo que você está tentando acessar não existe ou foi removido.</p>
+        </main>
+        <Footer />
+      </>
+    )
+  }
 
   return (
     <>
