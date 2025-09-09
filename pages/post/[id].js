@@ -1,6 +1,7 @@
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
+import Head from 'next/head'
 
 export async function getServerSideProps(context) {
   const { id } = context.params
@@ -45,8 +46,50 @@ export default function PostPage({ post, notFound }) {
     )
   }
 
+  // Dados para LD+JSON Schema.org
+  const ldJson = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": post.title.rendered,
+    "datePublished": post.date,
+    "dateModified": post.modified,
+    "author": post.author
+      ? {
+          "@type": "Person",
+          "name": post.author
+        }
+      : undefined,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${process.env.SITE_URL || 'https://seu-site-nextjs.com'}/post/${post.id}`
+    },
+    "articleBody": post.content?.rendered,
+    // Adicione imagem destacada se disponível
+    ...(post.featured_media && {
+      "image": [
+        `${process.env.SITE_URL || 'https://seu-site-nextjs.com'}/wp-content/uploads/${post.featured_media}`
+      ]
+    }),
+    // Adicione publisher se desejar
+    "publisher": {
+      "@type": "Organization",
+      "name": "Seu Site",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${process.env.SITE_URL || 'https://seu-site-nextjs.com'}/logo.png`
+      }
+    }
+  }
+
   return (
     <>
+      <Head>
+        <title>{post.title.rendered}</title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+        />
+      </Head>
       <Header />
       <main style={{maxWidth: '800px', margin: '0 auto', padding: '2rem'}}>
         <Link href="/"><a>← Voltar</a></Link>
