@@ -29,7 +29,7 @@ export default function Home() {
         <Hero />
         <FeaturedPosts posts={featured} />
         <Categories categories={categories} />
-        <h2>Posts Recentes</h2>
+        <h2>Recentes</h2>
         <PostList posts={posts} />
         <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
           <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
