@@ -1,8 +1,8 @@
 export default function Hero() {
   return (
     <section style={{padding: '2rem', background: '#eee', textAlign: 'center'}}>
-      <h1>Bem-vindo ao Blog!</h1>
-      <p>Descubra as últimas novidades e destaques.</p>
+      <p>Olá! Quer que eu te ajude a encontrar conteúdos alinhados ao seu perfil?</p>
+      <p>SIM | NÃO</p>
     </section>
   );
 }
