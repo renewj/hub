@@ -22,9 +22,6 @@ export default function Home() {
 
   return (
     <>
-    <Head>
-        <title>HC</title>
-      </Head>
       <Header />
       <Script src="/assets/js/main.js" strategy="afterInteractive" />
         <Hero />
