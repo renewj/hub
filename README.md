@@ -1,5 +1,4 @@
-# Next.js + API Exemplos
-
+# Next.js + API Exemplo
 Este projeto conecta Next.js à API REST do WordPress e entrega:
 
 - Home com Hero
