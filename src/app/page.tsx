@@ -18,8 +18,8 @@ export default function Home() {
             })
           }}
         />
-        <link rel="stylesheet" href="/assets/css/styles.css" />
-        <script src="/assets/js/scripts.js" defer></script>
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <script src="/assets/js/script.js" defer></script>
       </head>
       <body>
         <Header />
