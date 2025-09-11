@@ -26,7 +26,7 @@ export default function Home() {
       <Script src="/assets/js/main.js" strategy="afterInteractive" />
       <main style={{margin:'0 auto',maxWidth:'600px'}}>
         <Hero />
-        <div><input type="text" name="prompt" value="" placeholder="Em que podemos ajudar"></div>
+        <div><form><input type="text" name="prompt" value="" placeholder="Em que podemos ajudar" /></form></div>
         <FeaturedPosts posts={featured} />
         <Categories categories={categories} />
         <PostList posts={posts} />
