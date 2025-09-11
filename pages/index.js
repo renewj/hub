@@ -24,9 +24,9 @@ export default function Home() {
     <>
       <Header />
       <Script src="/assets/js/main.js" strategy="afterInteractive" />
-      <main style={{margin:'0 auto',maxWidth:'600px'}}>
         <Hero />
-        <div><form><input type="text" name="prompt" value="" placeholder="Em que podemos ajudar" /></form></div>
+    <main style={{margin:'0 auto',maxWidth:'600px'}}>
+        <div><form><label>Como podemos ajudar você hoje?</label><input type="text" name="prompt" value="" placeholder="Enviar sua mensagem para nós" /></form></div>
         <FeaturedPosts posts={featured} />
         <Categories categories={categories} />
         <PostList posts={posts} />
