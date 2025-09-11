@@ -24,11 +24,11 @@ export default function Home() {
     <>
       <Header />
       <Script src="/assets/js/main.js" strategy="afterInteractive" />
-      <main>
+      <main style={{margin:'0 auto',maxWidth:'600px'}}>
         <Hero />
+        <div><input type="text" name="prompt" value="" placeholder="Em que podemos ajudar"></div>
         <FeaturedPosts posts={featured} />
         <Categories categories={categories} />
-        <h2>Posts...</h2>
         <PostList posts={posts} />
         <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
           <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
