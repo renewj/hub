@@ -23,13 +23,12 @@ export default function Home() {
   return (
     <>
     <Head>
-        <title>HC</title>
+        <title>{{hub}}</title>
       </Head>
       <Header />
       <Script src="/assets/js/main.js" strategy="afterInteractive" />
         <Hero />
     <main style={{margin:'0 auto',maxWidth:'800px'}}>
-        <div><form><label>Como podemos ajudar você hoje?</label><input type="text" name="prompt" value="" placeholder="Enviar sua mensagem para nós" /></form></div>
         <FeaturedPosts posts={featured} />
         <Categories categories={categories} />
         <PostList posts={posts} />
